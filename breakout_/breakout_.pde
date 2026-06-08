@@ -18,9 +18,13 @@ float bx, by, bd, vx, vy, px, py, pd;
 //keyboard variables 
 boolean akey, dkey; 
 
-//Brick Variables 
+//arrays 
 int [] x; 
 int [] y; 
+boolean[] alive; 
+int brickd; 
+int n; 
+int tempx, tempy; 
 
 void setup() {
   size(800, 800); 
@@ -36,6 +40,7 @@ void setup() {
   vy = 1; 
   
   //set up array of bricks 
+  brickd = 50; 
   x = new int[3]; 
   y = new int[3]; 
   
@@ -54,3 +59,5 @@ void draw() {
     intro(); 
   } else if (mode == GAME) {
     game(); 
+  }
+}
