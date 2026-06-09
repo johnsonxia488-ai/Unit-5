@@ -2,7 +2,6 @@ void game() {
   background(paleskyBlue);
 
   //paddle
-
   fill(white);
   circle(px, py, pd);
   bx = bx + vx;
@@ -32,16 +31,26 @@ void game() {
     vx = vx * -1; 
   }
   //bricks
-  circle(x[0], y[0], brickd);
-  circle(x[1], y[1], brickd);
-  circle(x[2], y[2], brickd);
-  
   int i = 0; 
-  while (i < 4) {
-    cirlce(x[i], y[i], brickd); 
-    i=i+1; 
+  while ( i < n ) {
+    if (alive[i] == true) {
+    manageBrick(i); 
+  i++; 
 }
-  }  
+  }
+  }
 }
 void gameClicks() {
 }
+void manageBrick(int i) {
+  if (y[i] == 200) fill(paleskyBlue); 
+  if (y[i] == 200) fill(brightamberYellow); 
+  if (y[i] == 300) fill(goldenOrange); 
+  if (y[i] == 400) fill(grapesodaPurple); 
+  circle(x[i], y[i], brickd); 
+  if (dist(bx, by, x[i], y[i]) < bd/2 + brickd/2) {
+      vx = (bx - x[i])/10; 
+      vy = (by - y[i])/10;
+      alive [i] = false; 
+  }
+} 

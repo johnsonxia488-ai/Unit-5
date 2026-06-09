@@ -1,5 +1,14 @@
 //Johnson 
   
+//mode variables 
+int mode; 
+final int INTRO         = 0; 
+final int GAME          = 1; 
+final int PUASE         = 2; 
+final int GAMEOVER      = 3; 
+final int OPTIONS       = 4; 
+final int INTERSECTIONS = 5; 
+
 //colors 
 color white             = #FFFFFF; 
 color lightseaGreen     = #00A6A6;
@@ -28,7 +37,25 @@ int tempx, tempy;
 
 void setup() {
   size(800, 800); 
+  fill(255); 
   mode = INTRO; 
+  brickd = 50; 
+  n = 28; 
+  x = new int[n]; 
+  y = new int[n]; 
+  alive = new boolean[n]; 
+  tempx = 100; 
+  tempy = 100; 
+  int i = 0; 
+  while (i < n) {
+    x[i] = tempx; 
+    y[i] = tempy; 
+    alive[i] = true; 
+    tempx = tempx + 100; 
+    if (tempx == width) {
+      tempx = 100; 
+      tempy = tempy + 100; 
+    i=i+1; 
   
   //set up paddle and ball
   bx = width/2; 
@@ -53,7 +80,8 @@ void setup() {
   x[2] = 700; 
   y[2] = 100; 
 }
-
+  }
+}
 void draw() {
   if (mode == INTRO) {
     intro(); 
