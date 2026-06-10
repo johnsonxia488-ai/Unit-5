@@ -1,5 +1,6 @@
 //Johnson 
-  
+//breakout
+
 //mode variables 
 int mode; 
 final int INTRO         = 0; 
@@ -38,54 +39,50 @@ int tempx, tempy;
 void setup() {
   size(800, 800); 
   fill(255); 
-  mode = INTRO; 
+
+  mode = GAME; 
   brickd = 50; 
   n = 28; 
+  pd = 100; 
   x = new int[n]; 
   y = new int[n]; 
   alive = new boolean[n]; 
   tempx = 100; 
   tempy = 100; 
+
   int i = 0; 
   while (i < n) {
     x[i] = tempx; 
     y[i] = tempy; 
     alive[i] = true; 
+
     tempx = tempx + 100; 
-    if (tempx == width) {
+
+    if (tempx >= width) {
       tempx = 100; 
       tempy = tempy + 100; 
-    i=i+1; 
-  
-  //set up paddle and ball
+    }
+    i = i + 1; 
+  }
+
+  // ball
   bx = width/2; 
   by = height - 200; 
-  bd = 10; 
+  bd = 25; 
+
   px = width/2; 
-  py = height; 
+  py = height - 50; 
+  pd = 100; 
+
   vx = 0; 
-  vy = 1; 
-  
-  //set up array of bricks 
-  brickd = 50; 
-  x = new int[3]; 
-  y = new int[3]; 
-  
-  x[0] = 100; 
-  y[0] = 100; 
-  
-  x[1] = 400; 
-  y[1] = 100; 
-  
-  x[2] = 700; 
-  y[2] = 100; 
+  vy = 3; 
 }
-  }
-}
+
 void draw() {
   if (mode == INTRO) {
     intro(); 
-  } else if (mode == GAME) {
+  } 
+  else if (mode == GAME) {
     game(); 
   }
 }
