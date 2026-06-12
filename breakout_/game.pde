@@ -1,7 +1,6 @@
 void game() {
   background(0);
-
-  //scoreboard (bottom bar)
+  //scoreboard 
   fill(0);
   rectMode(CORNER);
   rect(0, height - 60, width, 60);
@@ -17,7 +16,7 @@ void game() {
   fill(brightamberYellow);
   text("Lives: " + lives, width - 50, height - 30);
 
-  // paddle movement
+  //paddle movement
   if (akey) px = px - 5;
   if (dkey) px = px + 5;
 
@@ -27,29 +26,29 @@ void game() {
   if (px > width - pd/2) {
   px = width - pd/2;
   }
-  // paddle display
+  //paddle
   noStroke(); 
   fill(white);
   arc(px, py, pd, pd, PI, TWO_PI);
-  // move ball
+  //move ball
   bx = bx + vx; 
   by = by + vy; 
-  // wall bounce
+  //wall bounce
   if (bx < bd/2 || bx > width - bd/2) {
     vx = vx * -1;
   }
   if (by < bd/2) {
     vy = vy * -1;
   }
-  // paddle collision
+  //paddle collision
   if (dist(bx, by, px, py) < bd/2 + pd/2) {
     vx = (bx - px) / 10;
     vy = (by - py) / 10;
   }
-  // ball draw
+  //ball draw
   fill(white);
   circle(bx, by, bd);
-  // lose life
+  //lose life
   if (by > height) {
     lives = lives - 1;
     bx = width/2;
@@ -66,7 +65,6 @@ void game() {
     i = i + 1;
   }
   int aliveCount = 0;
-
   int j = 0;
   while (j < n) {
   if (alive[j] == true) {
@@ -74,7 +72,6 @@ void game() {
   }
   j = j + 1;
 }
-
 if (aliveCount == 0) {
   mode = WIN;
 }

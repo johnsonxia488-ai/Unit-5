@@ -1,7 +1,6 @@
 void gameOver() {
 
   image(gif[f], 0, 0, width, height);
-
   textAlign(CENTER, CENTER);
   textFont(EclairAuLait);
 

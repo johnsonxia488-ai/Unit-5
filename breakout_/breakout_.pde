@@ -1,3 +1,10 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
 //Johnson 
 //breakout
 
@@ -10,6 +17,10 @@ final int GAMEOVER      = 3;
 final int OPTIONS      = 4; 
 final int INTERSECTIONS = 5; 
 final int WIN           = 6; 
+
+//sound variables 
+Minim minim; 
+AudioPlayer FAILURE, SUCCESS, MUSIC; 
 //colors 
 color white             = #FFFFFF; 
 color lightseaGreen     = #00A6A6;
@@ -46,8 +57,14 @@ void setup() {
   size(800, 800, P2D); 
   EclairAuLait = createFont("EclairAuLait.otf", 80); 
   textFont(EclairAuLait); 
-  fill(255); 
-
+  fill(255);
+  
+  //sound affects 
+  minim   = new Minim(this); 
+  FAILURE = minim.loadFile("FAILURE.wav"); 
+  SUCCESS = minim.loadFile("SUCCESS.wav"); 
+  MUSIC   = minim.loadFile("MUSIC.mp3"); 
+ 
   mode = INTRO; 
   brickd = 50; 
   n = 28; 
@@ -65,9 +82,7 @@ void setup() {
     x[i] = tempx; 
     y[i] = tempy; 
     alive[i] = true; 
-
     tempx = tempx + 100; 
-
     if (tempx >= width) {
       tempx = 100; 
       tempy = tempy + 100; 
@@ -76,24 +91,22 @@ void setup() {
   }
    numberOfFrames = 4;
   gif = new PImage[numberOfFrames];
-
   int g = 0;
   while (g < numberOfFrames) {
     gif[g] = loadImage("frame_"+g+"_delay-0.06s.gif");
     g=g+1;
   }
-
   // ball
   bx = width/2; 
   by = height - 200; 
   bd = 25; 
-
   px = width/2; 
   py = height - 50; 
   pd = 100; 
-
   vx = 0; 
   vy = 3; 
+  
+  MUSIC. loop(); 
 }
 
 void draw() {

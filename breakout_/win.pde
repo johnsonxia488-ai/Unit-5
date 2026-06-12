@@ -1,7 +1,6 @@
 void win() {
 
   image(gif[f], 0, 0, width, height);
-
   textAlign(CENTER, CENTER);
   textFont(EclairAuLait);
 
@@ -14,10 +13,8 @@ void win() {
   text("Click to play again", width/2, height/2 + 40);
 }
 void resetGame() {
-
   score = 0;
   lives = 3;
-
   bx = width/2;
   by = height - 200;
   vx = 0;
@@ -28,6 +25,5 @@ void resetGame() {
     alive[i] = true;
     i++;
   }
-
   mode = INTRO;
 }

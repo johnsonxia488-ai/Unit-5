@@ -1,6 +1,6 @@
 void intro() {
 
-  //animated background
+  //background
   image(gif[f], 0, 0, width, height);
 
   //title
@@ -23,14 +23,11 @@ void intro() {
 }
 
 void introClicks() {
-
   if (mouseX > width/2 - 125 &&
       mouseX < width/2 + 125 &&
       mouseY > 450 &&
       mouseY < 550) {
-
     mode = GAME;
-
   }
 
 }
