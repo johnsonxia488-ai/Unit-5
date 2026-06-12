@@ -51,5 +51,5 @@ void reset() {
   //game initialization 
   score   = 0; 
   lives   = 3; 
-  sliderY = 600; 
+  sliderY = 200; 
 }
