@@ -125,4 +125,33 @@ void wallBounce() {
   }
 }
 void gameClicks() {
+  
+
+if (ballx < 0) {
+ FAILURE.rewind();
+ FAILURE.play();
+ rightscore++;
+
+ ballx = width/2;
+ bally = height/2;
+
+ float angle = random(PI/4, 3*PI/4);
+
+ vx = speed * cos(angle);
+ vy = speed * sin(angle);
+}
+if (ballx > width) {
+FAILURE.rewind();
+FAILURE.play();
+leftscore++;
+
+ballx = width/2;
+bally = height/2;
+
+float angle = random(5*PI/4, 7*PI/4);
+
+vx = speed * cos(angle);
+vy = speed * sin(angle);
+}
+
 }
